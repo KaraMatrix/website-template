@@ -2,7 +2,7 @@ title: "Mustermann Handwerksservice"
 description: "Handwerk mit Anspruch – zuverlässig, sauber, pünktlich."
 lang: de
 url: ""
-baseurl: ""
+baseurl: "/website-template" # pro Kunde anpassen: "/<repo-name>", bei eigener Domain: ""
 
 collections:
   pages:
