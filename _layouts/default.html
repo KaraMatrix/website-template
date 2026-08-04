@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'de' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  {% if page.noindex %}<meta name="robots" content="noindex, follow">{% endif %}
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  <style>:root{--primary: {{ site.data.settings.farbe_primaer | default: '#1a5faa' }};}</style>
+</head>
+<body>
+
+{% comment %}
+  Navigation wird aus zwei Quellen zusammengebaut:
+  - _data/navigation.yml (feste Links, z.B. Anker auf der Startseite)
+  - _pages/-Collection (title/nav_label/nav_order/published je Unterseite)
+  Beide nutzen dieselben Feldnamen (nav_label, nav_order, url), damit sie
+  sich per Liquid zu einer Liste zusammenfügen und sortieren lassen.
+{% endcomment %}
+{% assign nav_data = site.data.navigation | where_exp: "item", "item.visible" %}
+{% if site.posts.size == 0 %}
+  {% assign nav_data = nav_data | where_exp: "item", "item.requires_posts != true" %}
+{% endif %}
+{% comment %}
+  site.pages ist hier bewusst die _pages-Collection (nicht Jekylls eingebaute
+  Pages-Liste): eine Collection namens "pages" (Ordner _pages/) überschreibt
+  in Liquid-Templates site.pages, siehe Jekyll::Drops::SiteDrop#[]. Das ist
+  nur ein Liquid-Template-Detail — Ruby-seitige Plugins (jekyll-sitemap etc.)
+  greifen weiter auf die echte Seiten-Liste zu und sind davon nicht betroffen.
+{% endcomment %}
+{% assign nav_pages = site.pages | where_exp: "p", "p.published" | where_exp: "p", "p.nav_label" %}
+{% assign nav_items = nav_data | concat: nav_pages | sort: "nav_order" %}
+{% assign header_nav = nav_items | where_exp: "item", "item.nav_location != 'footer'" %}
+{% assign footer_nav = nav_items | where_exp: "item", "item.nav_location == 'footer'" %}
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="site-header__brand" href="{{ '/' | relative_url }}">{{ site.data.settings.firma.name }}</a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle__label" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <ul>
+        {% for item in header_nav %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.nav_label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <a class="btn btn--call" href="tel:{{ site.data.settings.firma.telefon | replace: ' ', '' }}">Anrufen</a>
+  </div>
+</header>
+
+<main>
+{% case page.page_type %}
+
+{% when 'home' %}
+  {% assign f = site.data.settings.firma %}
+  <section class="hero">
+    <div class="wrap">
+      <h1>{{ f.name }}</h1>
+      <p class="hero__slogan">{{ f.slogan }}</p>
+      <a class="btn btn--primary btn--lg" href="tel:{{ f.telefon | replace: ' ', '' }}">Jetzt anrufen: {{ f.telefon }}</a>
+    </div>
+  </section>
+
+  <section id="leistungen" class="section">
+    <div class="wrap">
+      <h2>Leistungen</h2>
+      <div class="card-grid">
+        {% for l in site.data.settings.leistungen %}
+        <article class="card">
+          <h3>{{ l.titel }}</h3>
+          <p>{{ l.beschreibung }}</p>
+          {% if l.preis and l.preis != "" %}<p class="card__price">{{ l.preis }}</p>{% endif %}
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="ueber-uns" class="section section--muted">
+    <div class="wrap">
+      <h2>Über uns</h2>
+      <p>{{ site.data.settings.ueber_uns }}</p>
+    </div>
+  </section>
+
+  <section id="kontakt" class="section">
+    <div class="wrap kontakt-grid">
+      <div>
+        <h2>Kontakt</h2>
+        <p>
+          {{ f.strasse }}<br>
+          {{ f.plz }} {{ f.ort }}<br>
+          <a href="tel:{{ f.telefon | replace: ' ', '' }}">{{ f.telefon }}</a><br>
+          <a href="mailto:{{ f.email }}">{{ f.email }}</a>
+        </p>
+        {% if site.data.settings.google_bewertung_url and site.data.settings.google_bewertung_url != "" %}
+        <p><a class="badge" href="{{ site.data.settings.google_bewertung_url }}" target="_blank" rel="noopener noreferrer">★ Google-Bewertungen ansehen</a></p>
+        {% endif %}
+      </div>
+      <div>
+        <h2>Öffnungszeiten</h2>
+        <table class="hours">
+          {% for zeile in site.data.settings.oeffnungszeiten %}
+          <tr><td>{{ zeile.tag }}</td><td>{{ zeile.zeit }}</td></tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </section>
+
+{% when 'blog-index' %}
+  <section class="section">
+    <div class="wrap">
+      <h1>{{ page.title }}</h1>
+      {% if site.posts.size > 0 %}
+      <div class="post-list">
+        {% for post in site.posts %}
+        <article class="post-list__item">
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <p class="post-list__date">{{ post.date | date: "%d.%m.%Y" }}</p>
+          {% if post.excerpt %}<p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>{% endif %}
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p>Aktuell gibt es noch keine Beiträge.</p>
+      {% endif %}
+    </div>
+  </section>
+
+{% when 'post' %}
+  <section class="section">
+    <div class="wrap wrap--narrow">
+      <h1>{{ page.title }}</h1>
+      <p class="post-list__date">{{ page.date | date: "%d.%m.%Y" }}</p>
+      {{ content }}
+    </div>
+  </section>
+
+{% else %}
+  <section class="section">
+    <div class="wrap wrap--narrow">
+      <h1>{{ page.title }}</h1>
+      {{ content }}
+    </div>
+  </section>
+
+{% endcase %}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ site.data.settings.firma.name }}</p>
+    <ul class="footer-nav">
+      {% for item in footer_nav %}
+      <li><a href="{{ item.url | relative_url }}">{{ item.nav_label }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

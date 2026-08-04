@@ -1,0 +1,38 @@
+title: "Mustermann Handwerksservice"
+description: "Handwerk mit Anspruch – zuverlässig, sauber, pünktlich."
+lang: de
+url: ""
+baseurl: ""
+
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: default
+      page_type: post
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+      page_type: page
+
+markdown: kramdown
+permalink: /:title/
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .pages.yml
+  - node_modules

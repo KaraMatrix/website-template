@@ -1,0 +1,187 @@
+# Pages CMS Konfiguration — https://pagescms.org
+# Definiert, welche Inhalte der Kunde über die CMS-Oberfläche bearbeiten kann.
+
+media: assets/uploads
+
+content:
+  # --- Website-Einstellungen (_data/settings.yml) ---
+  - name: settings
+    label: "Website-Einstellungen"
+    type: file
+    path: _data/settings.yml
+    fields:
+      - name: firma
+        label: "Firma"
+        type: object
+        fields:
+          - name: name
+            label: "Firmenname"
+            type: string
+            required: true
+          - name: slogan
+            label: "Slogan"
+            type: string
+          - name: telefon
+            label: "Telefon"
+            type: string
+            required: true
+          - name: email
+            label: "E-Mail-Adresse"
+            type: string
+            required: true
+          - name: strasse
+            label: "Straße und Hausnummer"
+            type: string
+            required: true
+          - name: plz
+            label: "Postleitzahl"
+            type: string
+            required: true
+          - name: ort
+            label: "Ort"
+            type: string
+            required: true
+      - name: farbe_primaer
+        label: "Primärfarbe (Hex-Code)"
+        type: string
+        description: "z. B. #1a5faa"
+        required: true
+      - name: google_bewertung_url
+        label: "Link zu Google-Bewertungen (optional)"
+        type: string
+        required: false
+        description: "Leer lassen, um den Bewertungs-Button auszublenden."
+      - name: oeffnungszeiten
+        label: "Öffnungszeiten"
+        type: object
+        list: true
+        fields:
+          - name: tag
+            label: "Tag(e)"
+            type: string
+            required: true
+          - name: zeit
+            label: "Uhrzeit"
+            type: string
+            required: true
+      - name: leistungen
+        label: "Leistungen"
+        type: object
+        list: true
+        fields:
+          - name: titel
+            label: "Titel"
+            type: string
+            required: true
+          - name: beschreibung
+            label: "Beschreibung"
+            type: text
+            required: true
+          - name: preis
+            label: "Preis (optional)"
+            type: string
+            required: false
+      - name: ueber_uns
+        label: "Über-uns-Text"
+        type: text
+        required: true
+
+  # --- Navigation (_data/navigation.yml) ---
+  - name: navigation
+    label: "Navigation"
+    type: file
+    path: _data/navigation.yml
+    list: true
+    fields:
+      - name: nav_label
+        label: "Bezeichnung"
+        type: string
+        required: true
+      - name: url
+        label: "Ziel-URL"
+        type: string
+        required: true
+        description: "z. B. / oder /#kontakt oder /aktuelles/"
+      - name: nav_order
+        label: "Reihenfolge"
+        type: number
+        required: true
+      - name: visible
+        label: "Sichtbar"
+        type: boolean
+        default: true
+      - name: requires_posts
+        label: "Nur anzeigen, wenn Blogbeiträge existieren"
+        type: boolean
+        default: false
+
+  # --- Unterseiten, z. B. Impressum/Datenschutz (_pages/) ---
+  - name: pages
+    label: "Unterseiten"
+    type: collection
+    path: _pages
+    view:
+      fields: [title, published]
+    fields:
+      - name: title
+        label: "Titel"
+        type: string
+        required: true
+      - name: nav_label
+        label: "Bezeichnung in der Navigation"
+        type: string
+        required: true
+      - name: nav_order
+        label: "Reihenfolge in der Navigation"
+        type: number
+        default: 50
+      - name: nav_location
+        label: "Anzeigeort"
+        type: select
+        options:
+          values:
+            - name: header
+              label: "Hauptnavigation"
+            - name: footer
+              label: "Footer"
+        default: footer
+      - name: published
+        label: "Veröffentlicht"
+        type: boolean
+        default: true
+      - name: noindex
+        label: "Von Google ausschließen (z. B. Impressum/Datenschutz)"
+        type: boolean
+        default: false
+      - name: sitemap
+        label: "In Sitemap aufnehmen"
+        type: boolean
+        default: true
+      - name: body
+        label: "Inhalt"
+        type: rich-text
+
+  # --- Blog (_posts/) ---
+  - name: posts
+    label: "Aktuelles (Blog)"
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{fields.title}.md"
+    view:
+      fields: [title, date]
+    fields:
+      - name: title
+        label: "Titel"
+        type: string
+        required: true
+      - name: date
+        label: "Datum"
+        type: date
+        required: true
+      - name: image
+        label: "Aufmacherbild"
+        type: image
+        required: false
+      - name: body
+        label: "Text"
+        type: rich-text

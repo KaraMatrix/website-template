@@ -1,0 +1,27 @@
+# Haupt-Navigation. Zeigt sich zusätzlich zu den Seiten aus _pages/.
+# requires_posts: true -> Eintrag wird nur angezeigt, wenn mindestens 1 Blogpost existiert.
+- nav_label: "Start"
+  url: "/"
+  nav_order: 1
+  visible: true
+
+- nav_label: "Leistungen"
+  url: "/#leistungen"
+  nav_order: 2
+  visible: true
+
+- nav_label: "Über uns"
+  url: "/#ueber-uns"
+  nav_order: 3
+  visible: true
+
+- nav_label: "Kontakt"
+  url: "/#kontakt"
+  nav_order: 4
+  visible: true
+
+- nav_label: "Aktuelles"
+  url: "/aktuelles/"
+  nav_order: 10
+  visible: true
+  requires_posts: true
