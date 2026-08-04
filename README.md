@@ -62,3 +62,5 @@ bundle exec jekyll serve
 Neue Datei in `_posts/` als `YYYY-MM-DD-titel.md` mit Front Matter
 `title` und `date`. Die Übersichtsseite `/aktuelles/` erscheint automatisch
 in der Navigation, sobald mindestens ein Beitrag existiert.
+
+**Hinweis SEO:** Die Meta-Description/JSON-LD kommt aus `_config.yml` (`description:`) und wird EINMALIG beim Kunden-Setup gesetzt — CMS-Änderungen am Slogan ändern nur die sichtbare Seite, nicht das Google-Snippet. Beim Setup beide konsistent setzen.
