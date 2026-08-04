@@ -1,37 +1,29 @@
-# Alle editierbaren Festinhalte der Seite.
-# Wird über Pages CMS (pagescms.org) vom Kunden selbst gepflegt.
-
 firma:
-  name: "Mustermann Handwerksservice"
-  slogan: "Handwerk mit Anspruch – zuverlässig, sauber, pünktlich."
-  telefon: "+49 30 12345678"
-  email: "info@mustermann-handwerksservice.de"
-  strasse: "Musterstraße 12"
+  name: Mustermann Handwerksservice
+  slogan: Handwerk mit Anspruch – zuverlässig, sauber, pünktlich!
+  telefon: +49 30 12345678
+  email: info@mustermann-handwerksservice.de
+  strasse: Musterstraße 12
   plz: "12345"
-  ort: "Musterstadt"
-
+  ort: Musterstadt
 farbe_primaer: "#1a5faa"
-
-# Optional: Link zu Google-Bewertungen. Leer lassen = Badge wird nicht angezeigt.
-google_bewertung_url: ""
-
 oeffnungszeiten:
-  - tag: "Montag – Freitag"
-    zeit: "08:00 – 17:00 Uhr"
-  - tag: "Samstag"
-    zeit: "Nach Vereinbarung"
-  - tag: "Sonntag"
-    zeit: "Geschlossen"
-
+  - tag: Montag – Freitag
+    zeit: 08:00 – 17:00 Uhr
+  - tag: Samstag
+    zeit: Nach Vereinbarung
+  - tag: Sonntag
+    zeit: Geschlossen
 leistungen:
-  - titel: "Sanitärinstallation"
-    beschreibung: "Von der Badsanierung bis zur Reparatur – fachgerecht und termingerecht."
-    preis: "ab 89 € / Std."
-  - titel: "Heizungsservice"
-    beschreibung: "Wartung, Reparatur und Modernisierung Ihrer Heizungsanlage."
-    preis: ""
-  - titel: "Elektroinstallation"
-    beschreibung: "Sichere Elektroarbeiten nach aktuellen Normen – vom Anschluss bis zur Prüfung."
-    preis: "ab 79 € / Std."
-
-ueber_uns: "Seit über 15 Jahren sorgt unser Team aus erfahrenen Handwerkern für zuverlässige Lösungen rund ums Haus. Wir stehen für Qualität, Termintreue und ehrliche Beratung – von der ersten Anfrage bis zur letzten Schraube."
+  - titel: Sanitärinstallation
+    beschreibung: Von der Badsanierung bis zur Reparatur – fachgerecht und termingerecht.
+    preis: ab 89 € / Std.
+  - titel: Heizungsservice
+    beschreibung: Wartung, Reparatur und Modernisierung Ihrer Heizungsanlage.
+  - titel: Elektroinstallation
+    beschreibung: Sichere Elektroarbeiten nach aktuellen Normen – vom Anschluss bis
+      zur Prüfung.
+    preis: ab 79 € / Std.
+ueber_uns: Seit über 15 Jahren sorgt unser Team aus erfahrenen Handwerkern für
+  zuverlässige Lösungen rund ums Haus. Wir stehen für Qualität, Termintreue und
+  ehrliche Beratung – von der ersten Anfrage bis zur letzten Schraube.
