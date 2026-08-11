@@ -1,3 +1,7 @@
+---
+published: false
+---
+
 # Willkommen in Ihrem Redaktionssystem 👋
 
 Hier bearbeiten Sie Ihre Website selbst — Texte, Bilder und Beiträge. Diese Seite ist Ihre Kurzanleitung und bleibt immer hier oben.
