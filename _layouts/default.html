@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'de' }}">
 <head>
+  {%- assign fav_farbe = site.data.settings.farbe_primaer | default: '#1a5faa' | remove: '#' -%}
+  {%- assign fav_initial = site.data.settings.firma.name | slice: 0 | upcase | url_encode -%}
+  <!-- Favicon dynamisch aus CMS-Daten (Primärfarbe + Firmen-Initial); Safari zeigt ggf.
+       kein SVG-Favicon — beim Kunden-Setup optional durch echtes PNG-Logo ersetzen. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23{{ fav_farbe }}'/%3E%3Ctext%20x='32'%20y='45'%20font-family='Georgia,serif'%20font-size='38'%20font-weight='600'%20fill='white'%20text-anchor='middle'%3E{{ fav_initial }}%3C/text%3E%3C/svg%3E">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% seo %}

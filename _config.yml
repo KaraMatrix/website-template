@@ -1,7 +1,7 @@
 title: "Mustermann Handwerksservice"
 description: "Handwerk mit Anspruch – zuverlässig, sauber, pünktlich."
 lang: de
-url: ""
+url: "https://karamatrix.github.io" # pro Kunde: GitHub-Pages-Host bzw. eigene Domain
 baseurl: "/website-template" # pro Kunde anpassen: "/<repo-name>", bei eigener Domain: ""
 
 collections:
