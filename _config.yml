@@ -36,3 +36,4 @@ exclude:
   - Gemfile.lock
   - .pages.yml
   - node_modules
+  - onboarding-anleitung.html
