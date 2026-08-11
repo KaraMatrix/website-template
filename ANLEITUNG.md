@@ -4,7 +4,7 @@ Hier bearbeiten Sie Ihre Website selbst — Texte, Bilder und Beiträge. Diese S
 
 ## In drei Schritten zur Änderung
 
-1. **Bereich wählen** — links in der Seitenleiste, z. B. *Website-Einstellungen*.
+1. **Bereich wählen** — links in der Seitenleiste, z. B. *Webseiten-Einstellungen*.
 2. **Ändern und speichern** — Text oder Bild anpassen, oben rechts auf **Save** klicken. Pflichtfelder sind mit ***Required** markiert und dürfen nicht leer bleiben.
 3. **Fertig** — die Website veröffentlicht sich automatisch in ca. 2 Minuten. Sie müssen nichts weiter tun.
 
@@ -12,7 +12,7 @@ Hier bearbeiten Sie Ihre Website selbst — Texte, Bilder und Beiträge. Diese S
 
 ## So ist alles aufgebaut
 
-- **Website-Einstellungen** — Firmendaten, Kontakt, Öffnungszeiten, Leistungen, Farbe.
+- **Webseiten-Einstellungen** — Firmendaten, Kontakt, Öffnungszeiten, Leistungen, Farbe.
 - **Navigation** — welche Menüpunkte oben erscheinen und in welcher Reihenfolge.
 - **Unterseiten** — Impressum, Datenschutz und weitere Zusatzseiten.
 - **Aktuelles (Blog)** — Neuigkeiten schreiben, erscheinen automatisch auf der Website.
@@ -20,7 +20,7 @@ Hier bearbeiten Sie Ihre Website selbst — Texte, Bilder und Beiträge. Diese S
 
 ## Ihr Design — per Klick anpassbar
 
-Unter **Website-Einstellungen** wählen Sie neben Ihrer Firmenfarbe auch die **Formensprache**: alles klassisch eckig oder sanft abgerundet. Beides ist geprüft und sieht fertig aus.
+Unter **Webseiten-Einstellungen** wählen Sie neben Ihrer Firmenfarbe auch die **Formensprache**: alles klassisch eckig oder sanft abgerundet. Beides ist geprüft und sieht fertig aus.
 
 ## Gut zu wissen
 

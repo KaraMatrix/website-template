@@ -30,9 +30,9 @@ content:
           switcher: false
           media: false
 
-  # --- Website-Einstellungen (_data/settings.yml) ---
+  # --- Webseiten-Einstellungen (_data/settings.yml) ---
   - name: settings
-    label: "⚙️ Website-Einstellungen"
+    label: "⚙️ Webseiten-Einstellungen"
     type: file
     path: _data/settings.yml
     operations:
