@@ -45,7 +45,7 @@
     <nav class="site-nav" aria-label="Hauptnavigation">
       <ul>
         {% for item in header_nav %}
-        <li><a href="{{ item.url | relative_url }}">{{ item.nav_label }}</a></li>
+        <li><a href="{{ item.url | relative_url }}">{{ item.nav_label | escape }}</a></li>
         {% endfor %}
       </ul>
     </nav>
@@ -61,9 +61,9 @@
   {% assign f = site.data.settings.firma %}
   <section class="hero">
     <div class="wrap">
-      <h1>{{ f.name }}</h1>
-      <p class="hero__slogan">{{ f.slogan }}</p>
-      <a class="btn btn--primary btn--lg" href="tel:{{ f.telefon | replace: ' ', '' }}">Jetzt anrufen: {{ f.telefon }}</a>
+      <h1>{{ f.name | escape }}</h1>
+      <p class="hero__slogan">{{ f.slogan | escape }}</p>
+      <a class="btn btn--primary btn--lg" href="tel:{{ f.telefon | replace: ' ', '' }}">Jetzt anrufen: {{ f.telefon | escape }}</a>
     </div>
   </section>
 
@@ -73,9 +73,9 @@
       <div class="card-grid">
         {% for l in site.data.settings.leistungen %}
         <article class="card">
-          <h3>{{ l.titel }}</h3>
-          <p>{{ l.beschreibung }}</p>
-          {% if l.preis and l.preis != "" %}<p class="card__price">{{ l.preis }}</p>{% endif %}
+          <h3>{{ l.titel | escape }}</h3>
+          <p>{{ l.beschreibung | escape }}</p>
+          {% if l.preis and l.preis != "" %}<p class="card__price">{{ l.preis | escape }}</p>{% endif %}
         </article>
         {% endfor %}
       </div>
@@ -94,10 +94,10 @@
       <div>
         <h2>Kontakt</h2>
         <p>
-          {{ f.strasse }}<br>
-          {{ f.plz }} {{ f.ort }}<br>
-          <a href="tel:{{ f.telefon | replace: ' ', '' }}">{{ f.telefon }}</a><br>
-          <a href="mailto:{{ f.email }}">{{ f.email }}</a>
+          {{ f.strasse | escape }}<br>
+          {{ f.plz | escape }} {{ f.ort | escape }}<br>
+          <a href="tel:{{ f.telefon | replace: ' ', '' }}">{{ f.telefon | escape }}</a><br>
+          <a href="mailto:{{ f.email | escape }}">{{ f.email | escape }}</a>
         </p>
         {% if site.data.settings.google_bewertung_url and site.data.settings.google_bewertung_url != "" %}
         <p><a class="badge" href="{{ site.data.settings.google_bewertung_url }}" target="_blank" rel="noopener noreferrer">★ Google-Bewertungen ansehen</a></p>
@@ -122,7 +122,7 @@
       <div class="post-list">
         {% for post in site.posts %}
         <article class="post-list__item">
-          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
           <p class="post-list__date">{{ post.date | date: "%d.%m.%Y" }}</p>
           {% if post.excerpt %}<p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>{% endif %}
         </article>
@@ -159,7 +159,7 @@
     <p>&copy; {{ 'now' | date: "%Y" }} {{ site.data.settings.firma.name }}</p>
     <ul class="footer-nav">
       {% for item in footer_nav %}
-      <li><a href="{{ item.url | relative_url }}">{{ item.nav_label }}</a></li>
+      <li><a href="{{ item.url | relative_url }}">{{ item.nav_label | escape }}</a></li>
       {% endfor %}
     </ul>
   </div>
