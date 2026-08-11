@@ -85,7 +85,7 @@
   <section id="ueber-uns" class="section section--muted">
     <div class="wrap">
       <h2>Über uns</h2>
-      <p>{{ site.data.settings.ueber_uns }}</p>
+      <p>{{ site.data.settings.ueber_uns | escape }}</p>
     </div>
   </section>
 
@@ -156,7 +156,7 @@
 
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
-    <p>&copy; {{ 'now' | date: "%Y" }} {{ site.data.settings.firma.name }}</p>
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ site.data.settings.firma.name | escape }}</p>
     <ul class="footer-nav">
       {% for item in footer_nav %}
       <li><a href="{{ item.url | relative_url }}">{{ item.nav_label | escape }}</a></li>
