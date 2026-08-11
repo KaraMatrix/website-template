@@ -37,3 +37,4 @@ exclude:
   - .pages.yml
   - node_modules
   - onboarding-anleitung.html
+  - ANLEITUNG.md
