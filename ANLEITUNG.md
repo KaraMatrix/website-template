@@ -18,6 +18,10 @@ Hier bearbeiten Sie Ihre Website selbst — Texte, Bilder und Beiträge. Diese S
 - **Aktuelles (Blog)** — Neuigkeiten schreiben, erscheinen automatisch auf der Website.
 - **Media** — alle hochgeladenen Bilder an einem Ort.
 
+## Ihr Design — per Klick anpassbar
+
+Unter **Website-Einstellungen** wählen Sie neben Ihrer Firmenfarbe auch die **Formensprache**: alles klassisch eckig oder sanft abgerundet. Beides ist geprüft und sieht fertig aus.
+
 ## Gut zu wissen
 
 - **Bilder:** JPG oder PNG, ideal unter 500 KB — große Fotos vorher verkleinern, das hält die Website schnell.
