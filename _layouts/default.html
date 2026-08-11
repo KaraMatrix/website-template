@@ -11,7 +11,7 @@
   {% seo %}
   {% if page.noindex %}<meta name="robots" content="noindex, follow">{% endif %}
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
-  <style>:root{--primary: {{ site.data.settings.farbe_primaer | default: '#1a5faa' }};}</style>
+  <style>:root{--primary: {{ site.data.settings.farbe_primaer | default: '#1a5faa' }};--radius: {% if site.data.settings.design_ecken == 'eckig' %}0px{% else %}10px{% endif %};}</style>
 </head>
 <body>
 

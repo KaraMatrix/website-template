@@ -7,6 +7,7 @@ firma:
   plz: "12345"
   ort: Musterstadt
 farbe_primaer: "#1a5faa"
+design_ecken: abgerundet
 oeffnungszeiten:
   - tag: Montag – Freitag
     zeit: 08:00 – 17:00 Uhr
