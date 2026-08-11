@@ -1,7 +1,17 @@
 # Pages CMS Konfiguration — https://pagescms.org
 # Definiert, welche Inhalte der Kunde über die CMS-Oberfläche bearbeiten kann.
 
-media: assets/uploads
+media:
+  input: assets/uploads
+  output: /assets/uploads
+  categories: [image]
+  rename: safe
+
+settings:
+  content:
+    # Beim Speichern nicht im Schema enthaltene Keys (z. B. layout/permalink im
+    # Front Matter) erhalten statt löschen — Schutz vor stillem Datenverlust.
+    merge: true
 
 content:
   # --- Website-Einstellungen (_data/settings.yml) ---
@@ -9,6 +19,8 @@ content:
     label: "Website-Einstellungen"
     type: file
     path: _data/settings.yml
+    operations:
+      delete: false
     fields:
       - name: firma
         label: "Firma"
@@ -29,6 +41,9 @@ content:
             label: "E-Mail-Adresse"
             type: string
             required: true
+            pattern:
+              regex: '^[^@\s]+@[^@\s]+\.[^@\s]+$'
+              message: "Bitte eine gültige E-Mail-Adresse angeben, z. B. info@firma.de"
           - name: strasse
             label: "Straße und Hausnummer"
             type: string
@@ -37,6 +52,9 @@ content:
             label: "Postleitzahl"
             type: string
             required: true
+            pattern:
+              regex: '^[0-9]{5}$'
+              message: "Bitte genau 5 Ziffern angeben, z. B. 10115"
           - name: ort
             label: "Ort"
             type: string
@@ -44,17 +62,24 @@ content:
       - name: farbe_primaer
         label: "Primärfarbe (Hex-Code)"
         type: string
-        description: "z. B. #1a5faa"
         required: true
+        description: "z. B. #1a5faa"
+        pattern:
+          regex: '^#[0-9A-Fa-f]{6}$'
+          message: "Bitte als Hex-Code mit # und 6 Stellen angeben, z. B. #1a5faa"
       - name: google_bewertung_url
         label: "Link zu Google-Bewertungen (optional)"
         type: string
         required: false
-        description: "Leer lassen, um den Bewertungs-Button auszublenden."
+        description: "Vollständige Adresse mit https:// — leer lassen, um den Bewertungs-Button auszublenden."
       - name: oeffnungszeiten
         label: "Öffnungszeiten"
         type: object
-        list: true
+        list:
+          min: 1
+          collapsible:
+            collapsed: true
+            summary: "{tag}: {zeit}"
         fields:
           - name: tag
             label: "Tag(e)"
@@ -67,7 +92,11 @@ content:
       - name: leistungen
         label: "Leistungen"
         type: object
-        list: true
+        list:
+          min: 1
+          collapsible:
+            collapsed: true
+            summary: "{titel}"
         fields:
           - name: titel
             label: "Titel"
@@ -92,6 +121,8 @@ content:
     type: file
     path: _data/navigation.yml
     list: true
+    operations:
+      delete: false
     fields:
       - name: nav_label
         label: "Bezeichnung"
@@ -120,8 +151,18 @@ content:
     label: "Unterseiten"
     type: collection
     path: _pages
+    filename:
+      template: "{title}.md"
+      field: false
+    operations:
+      rename: false
     view:
       fields: [title, published]
+      primary: title
+      sort: [nav_order, title]
+      default:
+        sort: nav_order
+        order: asc
     fields:
       - name: title
         label: "Titel"
@@ -160,15 +201,24 @@ content:
       - name: body
         label: "Inhalt"
         type: rich-text
+        options:
+          switcher: false
 
   # --- Blog (_posts/) ---
   - name: posts
     label: "Aktuelles (Blog)"
     type: collection
     path: _posts
-    filename: "{year}-{month}-{day}-{fields.title}.md"
+    filename:
+      template: "{year}-{month}-{day}-{fields.title}.md"
+      field: false
     view:
       fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
     fields:
       - name: title
         label: "Titel"
@@ -185,3 +235,5 @@ content:
       - name: body
         label: "Text"
         type: rich-text
+        options:
+          switcher: false
