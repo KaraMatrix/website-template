@@ -32,7 +32,7 @@ content:
 
   # --- Website-Einstellungen (_data/settings.yml) ---
   - name: settings
-    label: "Website-Einstellungen"
+    label: "⚙️ Website-Einstellungen"
     type: file
     path: _data/settings.yml
     operations:
@@ -133,7 +133,7 @@ content:
 
   # --- Navigation (_data/navigation.yml) ---
   - name: navigation
-    label: "Navigation"
+    label: "🧭 Navigation"
     type: file
     path: _data/navigation.yml
     list: true
@@ -164,7 +164,7 @@ content:
 
   # --- Unterseiten, z. B. Impressum/Datenschutz (_pages/) ---
   - name: pages
-    label: "Unterseiten"
+    label: "📄 Unterseiten"
     type: collection
     path: _pages
     filename:
@@ -222,7 +222,7 @@ content:
 
   # --- Blog (_posts/) ---
   - name: posts
-    label: "Aktuelles (Blog)"
+    label: "📰 Aktuelles (Blog)"
     type: collection
     path: _posts
     filename:
