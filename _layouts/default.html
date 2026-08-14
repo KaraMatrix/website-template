@@ -105,7 +105,7 @@
           <a href="mailto:{{ f.email | escape }}">{{ f.email | escape }}</a>
         </p>
         {% if site.data.settings.google_bewertung_url and site.data.settings.google_bewertung_url != "" %}
-        <p><a class="badge" href="{{ site.data.settings.google_bewertung_url }}" target="_blank" rel="noopener noreferrer">★ Google-Bewertungen ansehen</a></p>
+        <p><a class="badge" href="{% include extern-url.html url=site.data.settings.google_bewertung_url %}" target="_blank" rel="noopener noreferrer">★ Google-Bewertungen ansehen</a></p>
         {% endif %}
       </div>
       <div>
