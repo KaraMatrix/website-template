@@ -98,6 +98,9 @@ content:
         label: "Link zu Google-Bewertungen (optional)"
         type: string
         required: false
+        pattern:
+          regex: '^$|^https://\S+$'
+          message: "Bitte die vollständige Adresse mit https:// angeben"
         description: "Vollständige Adresse mit https:// — leer lassen, um den Bewertungs-Button auszublenden."
       - name: oeffnungszeiten
         label: "Öffnungszeiten"
